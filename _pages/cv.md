@@ -7,9 +7,9 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
-
 NB: This CV is automatically generated from the contents of this website. For a PDF of my "official" CV, please click [here].(example.com)
+
+{% include base_path %}
 
 Education
 ======
