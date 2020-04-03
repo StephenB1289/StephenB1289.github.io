@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-NB: This CV is automatically generated from the contents of this website. For a PDF of my "official" CV, please click [here].(example.com)
+NB: This CV is automatically generated from the contents of this website. For a PDF of my "official" CV, please click [here](example.com).
 
 {% include base_path %}
 
