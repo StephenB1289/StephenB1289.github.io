@@ -9,6 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
+NB: This CV is automatically generated from the contents of this website. For a PDF of my "official" CV, please click [here](example.com)
+
 Education
 ======
 * B.S. in GitHub, GitHub University, 2012
