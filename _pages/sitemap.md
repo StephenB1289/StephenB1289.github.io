@@ -7,10 +7,20 @@ author_profile: true
 
 {% include base_path %}
 
-A list of everything found on the site. There is an [XML version]({{ base_path }}/sitemap.xml) available as well.
+A list of everything found on this site. There is an [XML version]({{ base_path }}/sitemap.xml) available as well.
 
 <h2>Pages</h2>
 {% for post in site.pages %}
+  {% include archive-single.html %}
+{% endfor %}
+
+<h2>Teaching</h2>
+{% for post in site.teaching %}
+  {% include archive-single.html %}
+{% endfor %}
+
+<h2>Portfolio</h2>
+{% for post in site.portfolio %}
   {% include archive-single.html %}
 {% endfor %}
 
@@ -19,19 +29,21 @@ A list of everything found on the site. There is an [XML version]({{ base_path }
   {% include archive-single.html %}
 {% endfor %}
 
-{% capture written_label %}'None'{% endcapture %}
 
-{% for collection in site.collections %}
-{% unless collection.output == false or collection.label == "posts" %}
-  {% capture label %}{{ collection.label }}{% endcapture %}
-  {% if label != written_label %}
-  <h2>{{ label }}</h2>
-  {% capture written_label %}{{ label }}{% endcapture %}
-  {% endif %}
-{% endunless %}
-{% for post in collection.docs %}
-  {% unless collection.output == false or collection.label == "posts" %}
-  {% include archive-single.html %}
-  {% endunless %}
-{% endfor %}
-{% endfor %}
+
+# {% capture written_label %}'None'{% endcapture %}
+
+# {% for collection in site.collections %}
+# {% unless collection.output == false or collection.label == "posts" %}
+#   {% capture label %}{{ collection.label }}{% endcapture %}
+#   {% if label != written_label %}
+#   <h2>{{ label }}</h2>
+#   {% capture written_label %}{{ label }}{% endcapture %}
+#   {% endif %}
+# {% endunless %}
+# {% for post in collection.docs %}
+#   {% unless collection.output == false or collection.label == "posts" %}
+#   {% include archive-single.html %}
+#   {% endunless %}
+# {% endfor %}
+# {% endfor %}
