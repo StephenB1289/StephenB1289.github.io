@@ -9,9 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-NB: This CV is automatically generated from the contents of this website. For a PDF of my "official" CV, please click [here](/files/stop-cv-format.pdf).
-
-Test external link [here](https://www.google.com)
+NB: Parts of this CV are automatically generated from the contents of this website. For a PDF of my "official" CV, please click [here](/files/Branch_CV.pdf).
 
 Education
 ======
