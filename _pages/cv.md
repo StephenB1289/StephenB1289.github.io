@@ -11,6 +11,8 @@ redirect_from:
 
 NB: This CV is automatically generated from the contents of this website. For a PDF of my "official" CV, please click [here](/files/stop-cv-format.pdf).
 
+Test external link [here](https://www.google.com)
+
 Education
 ======
 * B.S. in GitHub, GitHub University, 2012
