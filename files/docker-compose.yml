@@ -28,6 +28,7 @@ services:
             - "3005:3005"
             - "3000:3000"
             - "5050:5050"
+            - "8182:8182"
         devices:
             - /dev/fuse:/dev/fuse:rwm
         cap_add:
