@@ -37,29 +37,29 @@ services:
             - no-new-privileges
 
     plex:
-    image: plexinc/pms-docker:latest
-    container_name: plex
-    devices:
-        - /dev/dri:/dev/dri
-    volumes:
-        - /home/username/docker/plex/library:/config
-        - /home/username/docker/plex/transcode:/transcode
-        - /home/username/docker/DMB/Zurg/mnt:/data
-        - /home/username/docker/DMB/Riven/mnt:/mnt
-    environment:
-        - TZ=America/Detroit
-        - PLEX_UID=1000
-        - PLEX_GID=1000
-        - PLEX_CLAIM=
-    ports:
-        - "32400:32400"
-    healthcheck:
-        test: curl --connect-timeout 15 --silent --show-error --fail http://localhost:32400/identity
-        interval: 1m00s
-        timeout: 15s
-        retries: 3
-        start_period: 1m00s
-    depends_on:
-        DMB:
-        condition: service_healthy
-        restart: true
+        image: plexinc/pms-docker:latest
+        container_name: plex
+        devices:
+            - /dev/dri:/dev/dri
+        volumes:
+            - /home/username/docker/plex/library:/config
+            - /home/username/docker/plex/transcode:/transcode
+            - /home/username/docker/DMB/Zurg/mnt:/data
+            - /home/username/docker/DMB/Riven/mnt:/mnt
+        environment:
+            - TZ=America/Detroit
+            - PLEX_UID=1000
+            - PLEX_GID=1000
+            - PLEX_CLAIM=
+        ports:
+            - "32400:32400"
+        healthcheck:
+            test: curl --connect-timeout 15 --silent --show-error --fail http://localhost:32400/identity
+            interval: 1m00s
+            timeout: 15s
+            retries: 3
+            start_period: 1m00s
+        depends_on:
+            DMB:
+            condition: service_healthy
+            restart: true
