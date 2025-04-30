@@ -18,12 +18,12 @@ services:
             - /home/username/docker/DMB/Zilean/data:/zilean/app/data
             - /home/username/docker/DMB/plex_debrid:/plex_debrid/config
         environment:
-        - TZ=America/Detroit
-        - PUID=1000
-        - PGID=1000
-        - DMB_LOG_LEVEL=INFO
-        - ZURG_INSTANCES_REALDEBRID_API_KEY=
-        - RIVEN_FRONTEND_ENV_ORIGIN=http://SERVERIP:3000
+            - TZ=America/Detroit
+            - PUID=1000
+            - PGID=1000
+            - DMB_LOG_LEVEL=INFO
+            - ZURG_INSTANCES_REALDEBRID_API_KEY=
+            - RIVEN_FRONTEND_ENV_ORIGIN=http://SERVERIP:3000
         ports:
             - "3005:3005"
             - "3000:3000"
