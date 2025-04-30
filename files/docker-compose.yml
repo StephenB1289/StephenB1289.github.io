@@ -1,0 +1,65 @@
+services:
+    DMB:
+        container_name: DMB
+        image: iampuid0/dmb:latest
+        stop_grace_period: 30s
+        shm_size: 128mb
+        stdin_open: true
+        tty: true
+        volumes:
+            - /home/username/docker/DMB/config:/config
+            - /home/username/docker/DMB/log:/log
+            - /home/username/docker/DMB/Zurg/RD:/zurg/RD
+            - /home/username/docker/DMB/Zurg/mnt:/data:rshared
+            - /home/username/docker/DMB/Riven/data:/riven/backend/data
+            - /home/username/docker/DMB/Riven/mnt:/mnt
+            - /home/username/docker/DMB/PostgreSQL/data:/postgres_data
+            - /home/username/docker/DMB/pgAdmin4/data:/pgadmin/data
+            - /home/username/docker/DMB/Zilean/data:/zilean/app/data
+            - /home/username/docker/DMB/plex_debrid:/plex_debrid/config
+        environment:
+        - TZ=America/Detroit
+        - PUID=1000
+        - PGID=1000
+        - DMB_LOG_LEVEL=INFO
+        - ZURG_INSTANCES_REALDEBRID_API_KEY=
+        - RIVEN_FRONTEND_ENV_ORIGIN=http://SERVERIP:3000
+        ports:
+            - "3005:3005"
+            - "3000:3000"
+            - "5050:5050"
+        devices:
+            - /dev/fuse:/dev/fuse:rwm
+        cap_add:
+            - SYS_ADMIN
+        security_opt:
+            - apparmor:unconfined
+            - no-new-privileges
+
+    plex:
+    image: plexinc/pms-docker:latest
+    container_name: plex
+    devices:
+        - /dev/dri:/dev/dri
+    volumes:
+        - /home/username/docker/plex/library:/config
+        - /home/username/docker/plex/transcode:/transcode
+        - /home/username/docker/DMB/Zurg/mnt:/data
+        - /home/username/docker/DMB/Riven/mnt:/mnt
+    environment:
+        - TZ=America/Detroit
+        - PLEX_UID=1000
+        - PLEX_GID=1000
+        - PLEX_CLAIM=
+    ports:
+        - "32400:32400"
+    healthcheck:
+        test: curl --connect-timeout 15 --silent --show-error --fail http://localhost:32400/identity
+        interval: 1m00s
+        timeout: 15s
+        retries: 3
+        start_period: 1m00s
+    depends_on:
+        DMB:
+        condition: service_healthy
+        restart: true
